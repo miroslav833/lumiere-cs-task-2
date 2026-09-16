@@ -1,10 +1,11 @@
 # lumiere-cs-task-2
 
-Reserved for Lumiere task 2. Nothing here is ready to run.
+Lumiere task 2, Computer Systems. `task.md` and `image.png` on `main` are the current attempt, in
+the layout of `lumiere-cs-task`. Model logs go to `feedback/`, questions to `ASKS.md`.
 
-The branch predictor attempt that was on `main` (three panel figure, GTFA 1.79) was retired on
-2026-09-16 before it was run, because it reused the task 1 figure template. It stays in the
-history at commit 54faa82 for reference only. Do not run it and do not rebuild it.
+Attempt 1: one-panel log-log plot of effective bandwidth against message size for three links,
+question is the half-power message size of link A, GTFA 8.73. Not yet run. `tools/` holds the
+figure generator and the decoder that checked every marker against its gridline crossing.
 
-The next task 2 design lands here as `task.md` and `image.png` on `main`, in the layout of
-`lumiere-cs-task`, once `work-record.md` in `lumiere-playbook` carries its row.
+Retired before running: the branch predictor attempt (three panel figure, GTFA 1.79) at commit
+54faa82 reused the task 1 figure template. Reference only, do not run it and do not rebuild it.
