@@ -42,7 +42,7 @@ for y in range(H):
                         seen.add((nx, ny)); stack.append((nx, ny))
             xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
             blobs.append(((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2, len(pts)))
-print(f"{len(blobs)} marker blobs found (expect 33)")
+print(f"{len(blobs)} marker blobs found (expect 44)")
 ok = True
 for name, (gx, gy, v) in truth.items():
     link, size = name.split(":"); size = int(size)

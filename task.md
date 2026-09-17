@@ -1,27 +1,20 @@
-# Attempt 4: SURVIVED on 2026-09-16. Prompt rewritten by hand on 2026-09-17, to be re-entered.
+# Current attempt: 5 (four links, ratio of the largest 80 percent message size to the smallest)
 
-Instructions for the next extension run:
+Status: NOT YET RUN.
 
-1. image.png stays. Do not replace it.
-2. Replace the prompt on the form with the prompt under "## Step 4. Prompt" below, exactly. It is
-   the hand rewrite; the wording the models ran against is kept further down for the record.
-3. If the platform regenerates the two model blocks after the edit, wait for both and log them as
-   feedback/005.md in the usual layout. Both must be wrong. If either is right, stop and report.
-4. Replace the image description, failure justification, solution and distractors on the form with
-   steps 7 to 11 below, verbatim. The justification field takes both responses in one field.
-5. Do not press submit. That is for the human.
+Instructions for the extension run:
 
-Status: RUN, PASS. Both models wrong (Block 1: 16.3, Block 2: 7.75). Log in feedback/004.md. Form
-completed on Handshake up to the submit button: final answer 21.6, format Decimal, image description,
-model failure (both), justification of Block 1 (data extraction error), golden solution, references
-N/A, five distractors (16.3, 7.75, 20.4, 26.3, 35.8), Science Judge disputed (it read the checkbox
-text as the prompt). Not submitted, left for the human.
+1. Replace image.png on the form with this image.png. It has four links now.
+2. Replace the prompt on the form with the prompt under "## Step 4. Prompt", exactly.
+3. Wait for both blocks, log them as feedback/006.md in the usual layout. Both must be wrong. If
+   either is right, stop and report.
+4. Steps 7 to 11 will be written after both blocks fail. Do not press submit.
 
-Attempts 1 to 3 were each solved by exactly one of the two models (logs in feedback/). Every run had
-one misread marker in one model and none in the other. With three critical readings, one model
-survives. Attempt 4 keeps the attempt 3 figure unchanged and asks for a ratio that needs six
-critical readings, three in the packed 60 to 90 band of the top decade (link A, with link C crossing
-it twice there) and three in the packed 6 to 8 band of the 1 to 10 decade (link B).
+Why attempt 5 exists: attempt 4 (archive/attempt-4.md) ran twice on the same figure and question.
+First run both models wrong, rerun with the reworded prompt one model right. Six critical readings
+give about even odds per run. This attempt keeps the question type, keeps links A and B unchanged,
+and adds a fourth link and a ranking, so the answer needs every link worked out and the readings
+that decide it go from six to ten.
 
 | Field | Value |
 |---|---|
@@ -32,29 +25,17 @@ it twice there) and three in the packed 6 to 8 band of the 1 to 10 decade (link 
 | Reference material | N/A |
 | Publication venue | N/A |
 | Reference licence | N/A |
-| Image | image.png (unchanged from attempt 3) |
+| Image | image.png |
 
 ---
 
 ## Step 4. Prompt
 
-Rewritten by hand on 2026-09-17 after the run. Same meaning as the run prompt, which is kept below it.
+Image 1 is a log-log plot showing the effective bandwidth of four interconnect links, measured using a ping-pong microbenchmark, as a function of message size. The name of each link is indicated in the legend. Each measured data point is marked, and markers for the same link are connected by straight lines.
 
-Image 1 is a log-log plot showing the effective bandwidth of three interconnect links, measured using a ping-pong microbenchmark, as a function of message size. The name of each link is indicated in the legend. Each measured data point is marked, and markers for the same link are connected by straight lines.
-
-Calculate the ratio of the "$80\%$ message size" of Link A to the "$80\%$ message size" of Link B. Here, a link's "$80\%$ message size" is defined as the minimum message size at which the link achieves exactly $80\%$ of its asymptotic bandwidth.
+Calculate the ratio of the largest "$80\%$ message size" among the four links to the smallest "$80\%$ message size" among them. Here, a link's "$80\%$ message size" is defined as the minimum message size at which the link achieves exactly $80\%$ of its asymptotic bandwidth.
 
 Follow these rules: A link's asymptotic bandwidth is defined as the bandwidth observed at the largest message size shown on the graph. Since every marker is located at the intersection of two grid lines, the values at these intersections are to be read and treated as exact. Because the curve between two adjacent markers appears as a straight line segment on the logarithmic axes of the plot, perform linear interpolation based on the logarithms of the message size and the bandwidth. The message size on the horizontal axis doubles with each grid line crossed, and $1 \, \text{KB}$ is calculated as $1024 \, \text{B}$.
-
-The answer is a dimensionless ratio. Report your final answer as a 3 significant figure number without units. Any intermediate calculations should be carried out to 6 significant figures.
-
-### Prompt as run on 2026-09-16, for the record
-
-Image 1 is a log-log plot of the effective bandwidth of three interconnect links against message size, measured with a ping-pong microbenchmark. The links are named in the legend. Each measured point is drawn as a marker, and the markers of one link are joined by straight segments.
-
-Find the ratio of the $80$ percent message size of link A to the $80$ percent message size of link B. The $80$ percent message size of a link is the smallest message size at which the link delivers exactly $80$ percent of its asymptotic bandwidth.
-
-Use the following conventions. The asymptotic bandwidth of a link is its bandwidth at the largest message size on the plot. Every marker sits on a crossing of two gridlines, so take the reading of each marker at that crossing and treat the reading as exact. Between two neighbouring markers the curve is the straight segment drawn on the logarithmic axes of the figure, so interpolate linearly in the logarithm of message size and in the logarithm of bandwidth. Message sizes on the horizontal axis double from one gridline to the next, and $1 \, \text{KB}$ is $1024 \, \text{B}$.
 
 The answer is a dimensionless ratio. Report your final answer as a 3 significant figure number without units. Any intermediate calculations should be carried out to 6 significant figures.
 
@@ -83,150 +64,67 @@ project's mandated boilerplate.
 
 ## Ground truth
 
-Six readings on two curves, plus the legend, plus telling link A's filled circles from link C's
-filled diamonds where the two cross.
+Four 80 percent sizes, then the largest over the smallest.
 
-| reading | value |
-|---|---|
-| link A at 1 MB, the asymptotic bandwidth | 90 Gb/s |
-| link A at 64 KB | 60 Gb/s |
-| link A at 256 KB | 80 Gb/s |
-| link B at 1 MB, the asymptotic bandwidth | 8 Gb/s |
-| link B at 4 KB | 6 Gb/s |
-| link B at 16 KB | 7 Gb/s |
+| link | plateau | target | bracket | t | 80 percent size |
+|---|---|---|---|---|---|
+| A | 90 | 72 | 64 KB (60) to 256 KB (80) | 0.633761 | 154.078 KB |
+| B | 8 | 6.4 | 4 KB (6) to 16 KB (7) | 0.418672 | 7.14703 KB |
+| C | 60 | 48 | 64 KB (40) to 256 KB (60) | 0.449660 | 119.372 KB |
+| D | 7 | 5.6 | 4 KB (5) to 16 KB (6) | 0.621488 | 9.46872 KB |
 
-Link A: 80 percent of 90 is 72, between 64 KB (60) and 256 KB (80).
-t = ln(72/60) / ln(80/60) = 0.182322 / 0.287682 = 0.633761; size = 64 x 4^t = 154.078 KB.
-Link B: 80 percent of 8 is 6.4, between 4 KB (6) and 16 KB (7).
-t = ln(6.4/6) / ln(7/6) = 0.0645385 / 0.154151 = 0.418672; size = 4 x 4^t = 7.14703 KB.
-Ratio = 154.078 / 7.14703 = 21.5584, so 21.6.
-
-Link C is not needed, but its curve runs through link A's two bracketing markers: at 64 KB the
-circle (60) and the diamond (80) are two minor lines apart, at 256 KB the circle (80) and the
-diamond (60) likewise. Link C's 80 percent size, for the record, is 23.04 KB.
+Largest is A, smallest is B. Ratio = 154.078 / 7.14703 = 21.5584, so 21.6. Same value as attempt 4
+by construction: links A and B are unchanged, and the model has to establish that A and B are the
+extremes by working out C and D as well.
 
 Axes. Horizontal: message size, 1 B to 1 MB, one vertical gridline per power of two, labels at
 every power of four. Vertical: bandwidth in Gb/s, 0.001 to 100, only the decades labelled, minor
-gridlines at 2 to 9 in each decade. Markers at every power of four only.
+gridlines at 2 to 9 in each decade. Markers at every power of four only, radius 3.6 px at 1x.
 
 | link | marker | 1 B | 4 B | 16 B | 64 B | 256 B | 1 KB | 4 KB | 16 KB | 64 KB | 256 KB | 1 MB |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | A | filled circle | 0.008 | 0.03 | 0.1 | 0.5 | 2 | 8 | 30 | 50 | 60 | 80 | 90 |
 | B | open square | 0.005 | 0.02 | 0.08 | 0.3 | 1 | 3 | 6 | 7 | 8 | 8 | 8 |
-| C | filled diamond | 0.003 | 0.01 | 0.05 | 0.2 | 0.8 | 2 | 9 | 40 | 80 | 60 | 60 |
+| C | filled diamond | 0.003 | 0.01 | 0.05 | 0.2 | 0.8 | 2 | 9 | 30 | 40 | 60 | 60 |
+| D | open circle | 0.004 | 0.007 | 0.04 | 0.4 | 0.6 | 4 | 5 | 6 | 7 | 7 | 7 |
 
 Image is 3000 x 2000, rendered from SVG at 2x. Every marker centre was matched by script to the
-gridline crossing for its value, all 33 within one pixel (tools/decode.py, PYTHONSAFEPATH=1).
+gridline crossing for its value, all 44 within one pixel (tools/decode.py). No two links share a
+crossing, and the closest pair of markers in one column is one minor line apart at the 7 to 8
+spacing, where the marker edges are clear of each other.
 
 ## Where the levers are
 
-1. Six critical readings instead of three. In attempts 1 to 3 each model misread about one packed-band
-   marker per run; the chance that a model gets six clean is far lower than three.
-2. Link B's three readings (6, 7, 8) sit in the 6 to 8 band of the 1 to 10 decade, 23 to 27 px between
-   minor lines, none labelled, with link C's 9 at 4 KB one line above B's 6 region and link A's 8 at
-   1 KB one line under B's plateau.
-3. Link A's three readings (60, 80, 90) sit in the 60 to 90 band with link C crossing through both
-   bracketing markers.
-4. A ratio amplifies link B's slips: reading B's plateau as 9 or 7, or its 4 KB marker as 5 or 7,
-   moves the ratio by 35 to 107 percent.
-5. Habit trap: computing half-power sizes by reflex gives 6.76.
-6. Linear interpolation lands at 20.4, which is wrong at 3 significant figures.
+1. Ten readings decide the answer instead of six. A (60, 80, 90) and B (6, 7, 8) as before, plus
+   C's plateau at 60 and its 64 KB and 256 KB markers, and D's 4 KB, 16 KB and plateau markers.
+   Every one of those slips by one minor line changes the answer by 6 percent or more.
+2. B and D run parallel one minor line apart from 4 KB to 1 MB in the packed 5 to 8 band, open
+   square over open circle. B's markers were misread in three of the four model runs on attempt 4.
+3. C's plateau at 60 sits in the top decade next to A's 60 at 64 KB. Reading it as 70 makes C the
+   largest link and moves the answer 31 percent.
+4. The ranking is not visible by eye: C and A are both in the 100 to 160 KB range, B and D both
+   in the 7 to 10 KB range.
 
 ## Wrong readings and where they land
 
+Every single-marker slip to a neighbouring minor line was computed (tools/numbers.py). None lands
+inside 2 percent. The ones that change the answer:
+
 | slip | answer | off by |
 |---|---|---|
-| A: 64 KB marker taken from link C (80) | 6.56 | -70 percent |
-| A: 256 KB marker taken from link C (60) | 66.8 | +210 percent |
-| A: asymptotic bandwidth read as 100 | 35.8 | +66 percent |
-| A: 64 KB marker read as 50 | 26.3 | +22 percent |
-| B: asymptotic bandwidth read as 9 | 7.19 | -67 percent |
-| B: asymptotic bandwidth read as 7 | 44.2 | +105 percent |
-| B: 4 KB marker read as 5 | 13.9 | -35 percent |
-| B: 4 KB marker read as 7 | 44.6 | +107 percent |
-| B: 16 KB marker read as 8 | 28.2 | +31 percent |
-| linear interpolation on both links, a method error | 20.4 | -5.5 percent |
-| half-power sizes by habit | 6.76 | -69 percent |
+| A 64 KB read as 50 or 70 | 26.3 or 16.7 | +22 or -23 percent |
+| A 256 KB read as 70 or 90 | 41.8 or 16.7 | +94 or -23 percent |
+| A plateau read as 80 or 100 | 16.7 or 35.8 | -23 or +66 percent |
+| B 4 KB read as 5 or 7 | 16.3 or 44.6 | -25 or +107 percent |
+| B 16 KB read as 6 or 8 | 16.3 or 28.2 | -25 or +31 percent |
+| B plateau read as 7 or 9 | 44.2 or 16.3 | +105 or -25 percent |
+| C 64 KB read as 30 | 22.9 | +6.3 percent |
+| C 256 KB read as 50 | 27.8 | +29 percent |
+| C plateau read as 70 | 28.3 | +31 percent |
+| D 4 KB read as 6 | 48.8 | +126 percent |
+| D 16 KB read as 7 | 24.1 | +12 percent |
+| D plateau read as 6 | 49.6 | +130 percent |
+| linear interpolation instead of log-log, a method error | 20.4 | -5.5 percent |
 
-
----
-
-## Step 7. Image description
-
-Image 1 is a self-authored single panel figure on a plain white background at $3000 \times 2000$ pixels, drawn in black and grey. It is a schematic data figure, not a photograph, so there is no modality, magnification or staining to report.
-
-The panel is a log-log line plot. The horizontal axis is message size from $1 \, \text{B}$ to $1 \, \text{MB}$ with one vertical gridline per power of two and labels at every power of four: $1 \, \text{B}$, $4 \, \text{B}$, $16 \, \text{B}$, $64 \, \text{B}$, $256 \, \text{B}$, $1 \, \text{KB}$, $4 \, \text{KB}$, $16 \, \text{KB}$, $64 \, \text{KB}$, $256 \, \text{KB}$ and $1 \, \text{MB}$. The vertical axis is effective bandwidth in $\text{Gb/s}$ on a logarithmic scale from $0.001$ to $100$, with only the decades labelled and light minor gridlines at $2$ to $9$ inside each decade. A legend box in the lower right names three series: link A with filled circles, link B with open squares and link C with filled diamonds. Each series has eleven markers, one at every labelled message size, joined by straight black segments.
-
-Reading each marker at its gridline crossing, from $1 \, \text{B}$ to $1 \, \text{MB}$, link A is $0.008$, $0.03$, $0.1$, $0.5$, $2$, $8$, $30$, $50$, $60$, $80$ and $90 \, \text{Gb/s}$, rising throughout and flattening in the top decade. Link B is $0.005$, $0.02$, $0.08$, $0.3$, $1$, $3$, $6$, $7$, $8$, $8$ and $8 \, \text{Gb/s}$, flat from $64 \, \text{KB}$ onward. Link C is $0.003$, $0.01$, $0.05$, $0.2$, $0.8$, $2$, $9$, $40$, $80$, $60$ and $60 \, \text{Gb/s}$, so it crosses link A between $16 \, \text{KB}$ and $64 \, \text{KB}$, sits above it at $64 \, \text{KB}$, crosses back below it between $64 \, \text{KB}$ and $256 \, \text{KB}$ and stays flat at $60$ from $256 \, \text{KB}$.
-
-Every marker sits on a crossing of two gridlines. No value is printed as text on the figure. Line weights are uniform, text is crisp at full resolution, and there are no arrows, highlights, callouts, colour coding or annotations. The minor gridlines in the top decade and in the $1$ to $10$ decade are closely spaced, so the figure has to be read at full resolution rather than from a downscaled view.
-
----
-
-## Step 8. Model failure mode
-
-Select: figure-based quantitative estimation error (marker placed on the wrong minor gridline of a logarithmic axis).
-
-Justification, Response 1:
-
-> Response 1 answered $16.3$. It read link A exactly, $90$, $60$ and $80 \, \text{Gb/s}$, and picked the right markers where link C crosses link A. It then read all three link B markers one minor gridline low in the $6$ to $8$ band of the $1$ to $10$ decade: the plateau as $7$ instead of $8 \, \text{Gb/s}$, the $4 \, \text{KB}$ marker as $5$ instead of $6$ and the $16 \, \text{KB}$ marker as $6$ instead of $7$. Its definition of the asymptotic bandwidth, its log-log interpolation and its arithmetic were correct for those inputs, so the error is in reading the figure and not downstream. The result is $24.5$ percent below the GTFA of $21.6$.
-
-Justification, Response 2:
-
-> Response 2 answered $7.75$. It read the $64 \, \text{KB}$ marker of link A as $70$ instead of $60 \, \text{Gb/s}$, one minor gridline high in the packed $60$ to $90$ band of the top decade, and the $4 \, \text{KB}$ marker of link B as $5$ instead of $6 \, \text{Gb/s}$, one minor gridline low. Both plateaus and the remaining markers were read correctly, and the method and arithmetic were correct for those inputs, so the error is in reading the figure and not downstream. The result is $64.0$ percent below the GTFA of $21.6$.
-
----
-
-## Step 9. Step-by-step solution
-
-Step 1. Identify the series from the legend. Link A is the series with filled circles, link B the series with open squares. Link C, with filled diamonds, is not needed, but its curve passes through the region where link A has to be read, so each marker is checked for its shape before it is read.
-
-Step 2. Read the asymptotic bandwidth of each link at the rightmost marker, $1 \, \text{MB}$. The filled circle sits on the minor gridline one below the labelled $100$, so link A has $B_A = 90 \, \text{Gb/s}$. The open square sits on the gridline two below the labelled $10$, so link B has $B_B = 8 \, \text{Gb/s}$.
-
-Step 3. Form the two target levels:
-$$0.8 \times 90 = 72.0000 \, \text{Gb/s}, \qquad 0.8 \times 8 = 6.40000 \, \text{Gb/s}$$
-
-Step 4. Locate the bracketing markers of link A. The filled circles at $64 \, \text{KB}$ and $256 \, \text{KB}$ sit on the gridlines at $60$ and $80 \, \text{Gb/s}$, and $72$ lies between them. At $64 \, \text{KB}$ the filled diamond of link C sits two gridlines higher at $80$, and at $256 \, \text{KB}$ it sits two gridlines lower at $60$; both are ignored.
-
-Step 5. Locate the bracketing markers of link B. The open squares at $4 \, \text{KB}$ and $16 \, \text{KB}$ sit on the gridlines at $6$ and $7 \, \text{Gb/s}$, and $6.4$ lies between them. The $16 \, \text{KB}$ marker is the first that reaches or exceeds $6.4$, so this is the smallest size at which the level is met.
-
-Step 6. Apply the interpolation rule stated in the prompt. On log-log axes the segment between $(x_0, y_0)$ and $(x_1, y_1)$ satisfies
-$$\frac{\ln (y / y_0)}{\ln (y_1 / y_0)} = \frac{\ln (x / x_0)}{\ln (x_1 / x_0)}$$
-so the size at level $y$ is
-$$x = x_0 \left( \frac{x_1}{x_0} \right)^{t}, \qquad t = \frac{\ln (y / y_0)}{\ln (y_1 / y_0)}$$
-Each pair of neighbouring markers is a factor of $4$ apart in size, so $x_1 / x_0 = 4$ in both cases.
-
-Step 7. Link A:
-$$t_A = \frac{\ln (72 / 60)}{\ln (80 / 60)} = \frac{0.182322}{0.287682} = 0.633761$$
-$$x_A = 64 \times 4^{0.633761} = 64 \times 2.40748 = 154.078 \, \text{KB}$$
-
-Step 8. Link B:
-$$t_B = \frac{\ln (6.4 / 6)}{\ln (7 / 6)} = \frac{0.0645385}{0.154151} = 0.418672$$
-$$x_B = 4 \times 4^{0.418672} = 4 \times 1.78676 = 7.14703 \, \text{KB}$$
-
-Step 9. Form the ratio:
-$$\frac{x_A}{x_B} = \frac{154.078}{7.14703} = 21.5584$$
-
-Step 10. Rounded to three significant figures, the ratio is $21.6$.
-
-Final answer: $21.6$
-
----
-
-## Step 10. Distractors
-
-Distractors (incorrect answers only). Note that in testing we provided the model all potential answers, including the GTFA.
-
-| Value | Error it encodes |
-|---|---|
-| $16.3$ | Reads all three link B markers one minor gridline low, $7$, $5$ and $6 \, \text{Gb/s}$, in the packed $6$ to $8$ band. This was Response 1. |
-| $7.75$ | Reads the $64 \, \text{KB}$ marker of link A as $70 \, \text{Gb/s}$ and the $4 \, \text{KB}$ marker of link B as $5 \, \text{Gb/s}$, each one minor gridline off. This was Response 2. |
-| $20.4$ | Interpolates linearly in bandwidth and size instead of in their logarithms, against the rule stated in the prompt. |
-| $26.3$ | Reads the $64 \, \text{KB}$ marker of link A as $50 \, \text{Gb/s}$, one minor gridline low in the top decade. |
-| $35.8$ | Reads the link A plateau as $100 \, \text{Gb/s}$, the labelled decade line above the marker, so the target level $80$ lands on the $256 \, \text{KB}$ marker itself. |
-
----
-
-## Step 11. Answer format and tolerance
-
-Decimal. $3$ significant figures. Exact match on $21.6$.
+Slips on C and D in the other direction leave the ranking and the answer unchanged; they are listed
+in the numbers.py output.

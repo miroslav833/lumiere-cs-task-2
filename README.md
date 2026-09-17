@@ -3,11 +3,14 @@
 Lumiere task 2, Computer Systems. `task.md` and `image.png` on `main` are the current attempt, in
 the layout of `lumiere-cs-task`. Model logs go to `feedback/`, questions to `ASKS.md`.
 
-Attempt 4 (current, PASS): one-panel log-log plot of effective bandwidth against message size for
-three links, question is the ratio of the 80 percent message size of link A to that of link B,
-GTFA 21.6. Both models wrong (16.3 and 7.75). Six critical readings, three in the packed 60 to 90
-band of the top decade with link C crossing link A twice there, three in the packed 6 to 8 band of
-the 1 to 10 decade. Log in `feedback/004.md`. Form filled on Handshake up to the submit button.
+Attempt 5 (current, not yet run): same figure family with a fourth link, question is the ratio of
+the largest 80 percent message size among the four links to the smallest, GTFA 21.6. Ten readings
+decide the answer.
+
+Attempt 4 (archive/attempt-4.md): three links, ratio of link A's 80 percent size to link B's, GTFA
+21.6. First run both models wrong (`feedback/004.md`), rerun with the hand-reworded prompt one model
+right (`feedback/005.md`), so it is not submittable. Its package steps 7 to 11 are in the archive
+file and carry over to attempt 5 with the description extended to four links.
 
 Earlier attempts, each solved by exactly one model: 1 (half-power point of link A, 8.73,
 `feedback/001.md`), 2 (80 percent point of link A with readings in the 60 to 90 band, 85.7,
