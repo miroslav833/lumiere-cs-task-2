@@ -12,9 +12,9 @@ P = dict(l=150, t=50, r=1440, b=880)
 SIZES = [4 ** k for k in range(11)]                     # 1 B .. 1 MB
 LABELS = ["1 B", "4 B", "16 B", "64 B", "256 B", "1 KB", "4 KB", "16 KB", "64 KB", "256 KB", "1 MB"]
 CURVES = {
-    "Link A": [0.008, 0.03, 0.1, 0.5, 2, 8, 30, 50, 60, 70, 80],
+    "Link A": [0.008, 0.03, 0.1, 0.5, 2, 8, 30, 50, 60, 80, 90],
     "Link B": [0.005, 0.02, 0.08, 0.3, 1, 3, 6, 7, 8, 8, 8],
-    "Link C": [0.003, 0.01, 0.05, 0.2, 0.8, 2, 9, 20, 30, 30, 30],
+    "Link C": [0.003, 0.01, 0.05, 0.2, 0.8, 2, 9, 40, 80, 60, 60],
 }
 def xs(v): return P["l"] + (P["r"] - P["l"]) * math.log2(v) / 20.0
 def ys(v): return P["b"] - (P["b"] - P["t"]) * (math.log10(v) + 3) / 5.0
@@ -70,7 +70,7 @@ here = os.path.dirname(os.path.abspath(__file__)); root = os.path.dirname(here)
 open(f"{here}/fig.svg", "w").write(svg)
 open(f"{here}/fig.html", "w").write(f'<html><body style="margin:0;background:#fff"><img src="fig.svg" width="{W}" height="{H}"></body></html>')
 json.dump(truth, open(f"{here}/truth.json", "w"), indent=1)
-subprocess.run(["google-chrome", "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars",
+subprocess.run([os.environ.get("CHROME", "google-chrome"), "--headless=new", "--no-sandbox", "--disable-gpu", "--hide-scrollbars",
                 f"--user-data-dir={here}/.chrome", "--force-device-scale-factor=2", f"--window-size={W},{H}",
                 f"--screenshot={root}/" + ("markers_only.png" if MARKERS_ONLY else "image.png"), f"file://{here}/fig.html"], check=True, capture_output=True, timeout=120)
 print("rendered", "markers_only.png" if MARKERS_ONLY else "image.png")
