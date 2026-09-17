@@ -3,14 +3,15 @@
 Lumiere task 2, Computer Systems. `task.md` and `image.png` on `main` are the current attempt, in
 the layout of `lumiere-cs-task`. Model logs go to `feedback/`, questions to `ASKS.md`.
 
-Attempt 5 (current, not yet run): same figure family with a fourth link, question is the ratio of
-the largest 80 percent message size among the four links to the smallest, GTFA 21.6. Ten readings
-decide the answer.
+Attempt 5 (current, RUN, PASS): three-link figure from attempt 3, question is the product of the ratio of
+link A's 80 percent message size to link B's and the ratio of link C's to link B's, GTFA 69.5. Nine
+readings decide the answer. Both models wrong (3.29 and 15.0), `feedback/006.md`. Form filled on
+Handshake to the submit button.
 
 Attempt 4 (archive/attempt-4.md): three links, ratio of link A's 80 percent size to link B's, GTFA
 21.6. First run both models wrong (`feedback/004.md`), rerun with the hand-reworded prompt one model
-right (`feedback/005.md`), so it is not submittable. Its package steps 7 to 11 are in the archive
-file and carry over to attempt 5 with the description extended to four links.
+right (`feedback/005.md`). A four-link variant prepared for attempt 5 and not run is in
+archive/attempt-5-four-links.md.
 
 Earlier attempts, each solved by exactly one model: 1 (half-power point of link A, 8.73,
 `feedback/001.md`), 2 (80 percent point of link A with readings in the 60 to 90 band, 85.7,
