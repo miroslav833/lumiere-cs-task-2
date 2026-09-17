@@ -30,6 +30,18 @@ it twice there) and three in the packed 6 to 8 band of the 1 to 10 decade (link 
 
 ## Step 4. Prompt
 
+Rewritten by hand on 2026-09-17 after the run. Same meaning as the run prompt, which is kept below it.
+
+Image 1 is a log-log plot showing the effective bandwidth of three interconnect links, measured using a ping-pong microbenchmark, as a function of message size. The name of each link is indicated in the legend. Each measured data point is marked, and markers for the same link are connected by straight lines.
+
+Calculate the ratio of the "$80\%$ message size" of Link A to the "$80\%$ message size" of Link B. Here, a link's "$80\%$ message size" is defined as the minimum message size at which the link achieves exactly $80\%$ of its asymptotic bandwidth.
+
+Follow these rules: A link's asymptotic bandwidth is defined as the bandwidth observed at the largest message size shown on the graph. Since every marker is located at the intersection of two grid lines, the values at these intersections are to be read and treated as exact. Because the curve between two adjacent markers appears as a straight line segment on the logarithmic axes of the plot, perform linear interpolation based on the logarithms of the message size and the bandwidth. The message size on the horizontal axis doubles with each grid line crossed, and $1 \, \text{KB}$ is calculated as $1024 \, \text{B}$.
+
+The answer is a dimensionless ratio. Report your final answer as a 3 significant figure number without units. Any intermediate calculations should be carried out to 6 significant figures.
+
+### Prompt as run on 2026-09-16, for the record
+
 Image 1 is a log-log plot of the effective bandwidth of three interconnect links against message size, measured with a ping-pong microbenchmark. The links are named in the legend. Each measured point is drawn as a marker, and the markers of one link are joined by straight segments.
 
 Find the ratio of the $80$ percent message size of link A to the $80$ percent message size of link B. The $80$ percent message size of a link is the smallest message size at which the link delivers exactly $80$ percent of its asymptotic bandwidth.
