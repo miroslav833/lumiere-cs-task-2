@@ -14,8 +14,7 @@ LABELS = ["1 B", "4 B", "16 B", "64 B", "256 B", "1 KB", "4 KB", "16 KB", "64 KB
 CURVES = {
     "Link A": [0.008, 0.03, 0.1, 0.5, 2, 8, 30, 50, 60, 80, 90],
     "Link B": [0.005, 0.02, 0.08, 0.3, 1, 3, 6, 7, 8, 8, 8],
-    "Link C": [0.003, 0.01, 0.05, 0.2, 0.8, 2, 9, 30, 40, 60, 60],
-    "Link D": [0.004, 0.007, 0.04, 0.4, 0.6, 4, 5, 6, 7, 7, 7],
+    "Link C": [0.003, 0.01, 0.05, 0.2, 0.8, 2, 9, 40, 80, 60, 60],
 }
 def xs(v): return P["l"] + (P["r"] - P["l"]) * math.log2(v) / 20.0
 def ys(v): return P["b"] - (P["b"] - P["t"]) * (math.log10(v) + 3) / 5.0
@@ -41,15 +40,14 @@ for d in range(-3, 3):
         line(P["l"], y, P["r"], y, MAJOR if major else MINOR, 1.0)
         if major: text(P["l"] - 12, y + 7, ("%g" % v), 20, "end")
 # curves
-R = 3.6
+R = 5.0
 def marker(kind, x, y):
     if kind == "circle": add(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="{R}" fill="{INK}"/>')
-    elif kind == "ocircle": add(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="{R}" fill="#ffffff" stroke="{INK}" stroke-width="1.6"/>')
     elif kind == "square": add(f'<rect x="{x-R:.2f}" y="{y-R:.2f}" width="{2*R}" height="{2*R}" fill="#ffffff" stroke="{INK}" stroke-width="1.6"/>')
     else:
         h = R * 1.35
         add(f'<polygon points="{x:.2f},{y-h:.2f} {x+h:.2f},{y:.2f} {x:.2f},{y+h:.2f} {x-h:.2f},{y:.2f}" fill="{INK}"/>')
-KIND = {"Link A": "circle", "Link B": "square", "Link C": "diamond", "Link D": "ocircle"}
+KIND = {"Link A": "circle", "Link B": "square", "Link C": "diamond"}
 truth = {}
 for name, vals in CURVES.items():
     pts = [(xs(s), ys(v)) for s, v in zip(SIZES, vals)]
@@ -61,9 +59,9 @@ line(P["l"], P["t"], P["l"], P["b"], INK, 1.5); line(P["l"], P["b"], P["r"], P["
 text(P["l"] - 95, (P["t"] + P["b"]) / 2, "Effective bandwidth (Gb/s)", 24, rot=True)
 text((P["l"] + P["r"]) / 2, P["b"] + 72, "Message size", 24)
 # legend, bottom right, inside the frame
-lx, ly = P["r"] - 250, P["b"] - 166
+lx, ly = P["r"] - 250, P["b"] - 130
 if MARKERS_ONLY: lx = -1000
-add(f'<rect x="{lx-20}" y="{ly-30}" width="220" height="154" fill="#ffffff" stroke="{INK}" stroke-width="1.0"/>')
+add(f'<rect x="{lx-20}" y="{ly-30}" width="220" height="118" fill="#ffffff" stroke="{INK}" stroke-width="1.0"/>')
 for i, name in enumerate(CURVES):
     y = ly + i * 36
     line(lx, y, lx + 50, y, INK, 1.6); marker(KIND[name], lx + 25, y); text(lx + 66, y + 7, name, 20, "start")
