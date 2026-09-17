@@ -1,7 +1,15 @@
-# Attempt 4: SURVIVED. Both models failed. Full package below.
+# Attempt 4: SURVIVED on 2026-09-16. Prompt rewritten by hand on 2026-09-17, to be re-entered.
 
-Do not change image.png or the prompt, both models have already run against them. Steps 7 to 11
-are at the end of this file, in platform order, ready to paste or to check against the form.
+Instructions for the next extension run:
+
+1. image.png stays. Do not replace it.
+2. Replace the prompt on the form with the prompt under "## Step 4. Prompt" below, exactly. It is
+   the hand rewrite; the wording the models ran against is kept further down for the record.
+3. If the platform regenerates the two model blocks after the edit, wait for both and log them as
+   feedback/005.md in the usual layout. Both must be wrong. If either is right, stop and report.
+4. Replace the image description, failure justification, solution and distractors on the form with
+   steps 7 to 11 below, verbatim. The justification field takes both responses in one field.
+5. Do not press submit. That is for the human.
 
 Status: RUN, PASS. Both models wrong (Block 1: 16.3, Block 2: 7.75). Log in feedback/004.md. Form
 completed on Handshake up to the submit button: final answer 21.6, format Decimal, image description,
