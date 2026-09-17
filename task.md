@@ -1,4 +1,7 @@
-# Current attempt: 4 (log-log bandwidth against message size, ratio of the 80 percent sizes of links A and B)
+# Attempt 4: SURVIVED. Both models failed. Full package below.
+
+Do not change image.png or the prompt, both models have already run against them. Steps 7 to 11
+are at the end of this file, in platform order, ready to paste or to check against the form.
 
 Status: RUN, PASS. Both models wrong (Block 1: 16.3, Block 2: 7.75). Log in feedback/004.md. Form
 completed on Handshake up to the submit button: final answer 21.6, format Decimal, image description,
@@ -124,3 +127,86 @@ gridline crossing for its value, all 33 within one pixel (tools/decode.py, PYTHO
 | B: 16 KB marker read as 8 | 28.2 | +31 percent |
 | linear interpolation on both links, a method error | 20.4 | -5.5 percent |
 | half-power sizes by habit | 6.76 | -69 percent |
+
+
+---
+
+## Step 7. Image description
+
+Image 1 is a self-authored single panel figure on a plain white background at $3000 \times 2000$ pixels, drawn in black and grey. It is a schematic data figure, not a photograph, so there is no modality, magnification or staining to report.
+
+The panel is a log-log line plot. The horizontal axis is message size from $1 \, \text{B}$ to $1 \, \text{MB}$ with one vertical gridline per power of two and labels at every power of four: $1 \, \text{B}$, $4 \, \text{B}$, $16 \, \text{B}$, $64 \, \text{B}$, $256 \, \text{B}$, $1 \, \text{KB}$, $4 \, \text{KB}$, $16 \, \text{KB}$, $64 \, \text{KB}$, $256 \, \text{KB}$ and $1 \, \text{MB}$. The vertical axis is effective bandwidth in $\text{Gb/s}$ on a logarithmic scale from $0.001$ to $100$, with only the decades labelled and light minor gridlines at $2$ to $9$ inside each decade. A legend box in the lower right names three series: link A with filled circles, link B with open squares and link C with filled diamonds. Each series has eleven markers, one at every labelled message size, joined by straight black segments.
+
+Reading each marker at its gridline crossing, from $1 \, \text{B}$ to $1 \, \text{MB}$, link A is $0.008$, $0.03$, $0.1$, $0.5$, $2$, $8$, $30$, $50$, $60$, $80$ and $90 \, \text{Gb/s}$, rising throughout and flattening in the top decade. Link B is $0.005$, $0.02$, $0.08$, $0.3$, $1$, $3$, $6$, $7$, $8$, $8$ and $8 \, \text{Gb/s}$, flat from $64 \, \text{KB}$ onward. Link C is $0.003$, $0.01$, $0.05$, $0.2$, $0.8$, $2$, $9$, $40$, $80$, $60$ and $60 \, \text{Gb/s}$, so it crosses link A between $16 \, \text{KB}$ and $64 \, \text{KB}$, sits above it at $64 \, \text{KB}$, crosses back below it between $64 \, \text{KB}$ and $256 \, \text{KB}$ and stays flat at $60$ from $256 \, \text{KB}$.
+
+Every marker sits on a crossing of two gridlines. No value is printed as text on the figure. Line weights are uniform, text is crisp at full resolution, and there are no arrows, highlights, callouts, colour coding or annotations. The minor gridlines in the top decade and in the $1$ to $10$ decade are closely spaced, so the figure has to be read at full resolution rather than from a downscaled view.
+
+---
+
+## Step 8. Model failure mode
+
+Select: figure-based quantitative estimation error (marker placed on the wrong minor gridline of a logarithmic axis).
+
+Justification, Response 1:
+
+> Response 1 answered $16.3$. It read link A exactly, $90$, $60$ and $80 \, \text{Gb/s}$, and picked the right markers where link C crosses link A. It then read all three link B markers one minor gridline low in the $6$ to $8$ band of the $1$ to $10$ decade: the plateau as $7$ instead of $8 \, \text{Gb/s}$, the $4 \, \text{KB}$ marker as $5$ instead of $6$ and the $16 \, \text{KB}$ marker as $6$ instead of $7$. Its definition of the asymptotic bandwidth, its log-log interpolation and its arithmetic were correct for those inputs, so the error is in reading the figure and not downstream. The result is $24.5$ percent below the GTFA of $21.6$.
+
+Justification, Response 2:
+
+> Response 2 answered $7.75$. It read the $64 \, \text{KB}$ marker of link A as $70$ instead of $60 \, \text{Gb/s}$, one minor gridline high in the packed $60$ to $90$ band of the top decade, and the $4 \, \text{KB}$ marker of link B as $5$ instead of $6 \, \text{Gb/s}$, one minor gridline low. Both plateaus and the remaining markers were read correctly, and the method and arithmetic were correct for those inputs, so the error is in reading the figure and not downstream. The result is $64.0$ percent below the GTFA of $21.6$.
+
+---
+
+## Step 9. Step-by-step solution
+
+Step 1. Identify the series from the legend. Link A is the series with filled circles, link B the series with open squares. Link C, with filled diamonds, is not needed, but its curve passes through the region where link A has to be read, so each marker is checked for its shape before it is read.
+
+Step 2. Read the asymptotic bandwidth of each link at the rightmost marker, $1 \, \text{MB}$. The filled circle sits on the minor gridline one below the labelled $100$, so link A has $B_A = 90 \, \text{Gb/s}$. The open square sits on the gridline two below the labelled $10$, so link B has $B_B = 8 \, \text{Gb/s}$.
+
+Step 3. Form the two target levels:
+$$0.8 \times 90 = 72.0000 \, \text{Gb/s}, \qquad 0.8 \times 8 = 6.40000 \, \text{Gb/s}$$
+
+Step 4. Locate the bracketing markers of link A. The filled circles at $64 \, \text{KB}$ and $256 \, \text{KB}$ sit on the gridlines at $60$ and $80 \, \text{Gb/s}$, and $72$ lies between them. At $64 \, \text{KB}$ the filled diamond of link C sits two gridlines higher at $80$, and at $256 \, \text{KB}$ it sits two gridlines lower at $60$; both are ignored.
+
+Step 5. Locate the bracketing markers of link B. The open squares at $4 \, \text{KB}$ and $16 \, \text{KB}$ sit on the gridlines at $6$ and $7 \, \text{Gb/s}$, and $6.4$ lies between them. The $16 \, \text{KB}$ marker is the first that reaches or exceeds $6.4$, so this is the smallest size at which the level is met.
+
+Step 6. Apply the interpolation rule stated in the prompt. On log-log axes the segment between $(x_0, y_0)$ and $(x_1, y_1)$ satisfies
+$$\frac{\ln (y / y_0)}{\ln (y_1 / y_0)} = \frac{\ln (x / x_0)}{\ln (x_1 / x_0)}$$
+so the size at level $y$ is
+$$x = x_0 \left( \frac{x_1}{x_0} \right)^{t}, \qquad t = \frac{\ln (y / y_0)}{\ln (y_1 / y_0)}$$
+Each pair of neighbouring markers is a factor of $4$ apart in size, so $x_1 / x_0 = 4$ in both cases.
+
+Step 7. Link A:
+$$t_A = \frac{\ln (72 / 60)}{\ln (80 / 60)} = \frac{0.182322}{0.287682} = 0.633761$$
+$$x_A = 64 \times 4^{0.633761} = 64 \times 2.40748 = 154.078 \, \text{KB}$$
+
+Step 8. Link B:
+$$t_B = \frac{\ln (6.4 / 6)}{\ln (7 / 6)} = \frac{0.0645385}{0.154151} = 0.418672$$
+$$x_B = 4 \times 4^{0.418672} = 4 \times 1.78676 = 7.14703 \, \text{KB}$$
+
+Step 9. Form the ratio:
+$$\frac{x_A}{x_B} = \frac{154.078}{7.14703} = 21.5584$$
+
+Step 10. Rounded to three significant figures, the ratio is $21.6$.
+
+Final answer: $21.6$
+
+---
+
+## Step 10. Distractors
+
+Distractors (incorrect answers only). Note that in testing we provided the model all potential answers, including the GTFA.
+
+| Value | Error it encodes |
+|---|---|
+| $16.3$ | Reads all three link B markers one minor gridline low, $7$, $5$ and $6 \, \text{Gb/s}$, in the packed $6$ to $8$ band. This was Response 1. |
+| $7.75$ | Reads the $64 \, \text{KB}$ marker of link A as $70 \, \text{Gb/s}$ and the $4 \, \text{KB}$ marker of link B as $5 \, \text{Gb/s}$, each one minor gridline off. This was Response 2. |
+| $20.4$ | Interpolates linearly in bandwidth and size instead of in their logarithms, against the rule stated in the prompt. |
+| $26.3$ | Reads the $64 \, \text{KB}$ marker of link A as $50 \, \text{Gb/s}$, one minor gridline low in the top decade. |
+| $35.8$ | Reads the link A plateau as $100 \, \text{Gb/s}$, the labelled decade line above the marker, so the target level $80$ lands on the $256 \, \text{KB}$ marker itself. |
+
+---
+
+## Step 11. Answer format and tolerance
+
+Decimal. $3$ significant figures. Exact match on $21.6$.
