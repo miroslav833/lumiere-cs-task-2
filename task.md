@@ -1,6 +1,6 @@
 # Attempt 7: task graph, static list scheduling on four processors, total communication cost
 
-Status: NOT YET RUN on the form. Built 2026-09-18 after attempts 5 and 6 were both rejected with
+Status: RUN, PASS. Both models wrong (Block 1: 90, Block 2: 78), log in feedback/008.md. Form filled to the submit button, not submitted. Built 2026-09-18 after attempts 5 and 6 were both rejected with
 "did not meet the required difficulty level and failed the Pass@2 check". GTFA 105.
 
 Why the change of approach: attempts 1 to 6 all put the difficulty in reading packed gridlines on a
@@ -122,10 +122,11 @@ Many arrows cross one another, and several span two or three rows, but no arrow 
 
 ## Step 8. Model failure mode
 
-Fill after the blocks return. Expected: "Connectivity / topology error" (arrow attached to the
-wrong node, arrow missed or invented) or "Data extraction error" (delay label read from the wrong
-arrow). A pure simulation slip with a correctly read graph would be a reasoning error; justify from
-the actual response.
+Block 2 justified, "Connectivity / topology error". Its scheduling method was right; its placement
+order is only possible if arrows were lost or misattached (T10 last: arrow T10 to T19 lost; T13 and
+T4 after T8: bottom levels of 11 or less against 17 and 16; T14 before T16: at least 13 against 10;
+T1 after T7 and T11: below 20). Its schedule diverges after T5 and its 20 cross-processor terms sum
+to 78 against 105. Full text in feedback/008.md.
 
 ---
 
@@ -190,12 +191,12 @@ Final answer: 105
 
 ## Step 10. Distractors
 
-Replace the first two with the models' wrong answers once the blocks return.
+As entered on the form:
 
-1. 152 (sum of every delay, placement ignored)
-2. 85 (task sent to the first free processor)
-3. 97 (bottom-level ties broken the other way)
-4. 84 (insertion into idle gaps)
+1. 90 (Block 1's answer)
+2. 78 (Block 2's answer)
+3. 152 (sum of every delay, placement ignored)
+4. 85 (task sent to the first free processor)
 5. 41 (the makespan)
 
 ---

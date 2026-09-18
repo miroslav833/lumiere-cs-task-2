@@ -7,7 +7,8 @@ Attempt 7 (current, task.md): a task graph (20 tasks, 35 dependency arrows with 
 crossings) scheduled by static list scheduling on four processors; the answer is the total
 communication cost of the schedule, GTFA 105. Built after attempts 5 and 6 were both rejected on the
 Pass@2 check: the reviewer's model reads the log-log figures at full resolution, so gridline packing
-is not a lever there. Difficulty now sits in graph extraction plus a 20-step scheduling simulation.
+is not a lever there. Difficulty now sits in graph extraction plus a 20-step scheduling simulation. Both form models
+wrong (90 and 78, `feedback/008.md`); form filled on Handshake to the submit button.
 Tools: `tools/dag.py` (graph, scheduler, sensitivity; `python3 tools/dag.py search` scans seeds),
 `tools/make_dag_fig.py` (annealed layout, render), `tools/dag_solution.py` (independent
 re-derivation, writes the golden solution). Run them with `PYTHONSAFEPATH=1`.
