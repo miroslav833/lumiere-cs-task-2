@@ -1,20 +1,51 @@
 import math
-def pt(frac, plateau, x0, y0, x1, y1):
-    """message size where the curve reaches frac * plateau, log-log interpolation between (x0,y0) and (x1,y1)"""
-    t = (math.log(frac * plateau) - math.log(y0)) / (math.log(y1) - math.log(y0))
-    return x0 * (x1 / x0) ** t
-# attempt 3: link A = 30 @4KB, 50 @16KB, 60 @64KB, 80 @256KB, 90 @1MB; link C = 40 @16KB, 80 @64KB, 60 @256KB, 60 @1MB
-# asked: 80 percent of link A's asymptotic bandwidth
-base = pt(0.8, 90, 64, 60, 256, 80); print("GTFA %.6f KB" % base)
-for n, v in [("64 KB marker taken from link C (80): thr 72 between 50 and 80", pt(0.8, 90, 16, 50, 64, 80)),
-             ("256 KB marker taken from link C (60): thr 72 between 60@256K and 90@1M", pt(0.8, 90, 256, 60, 1024, 90)),
-             ("link C followed entirely (plateau 60, thr 48, between 40 and 80)", pt(0.8, 60, 16, 40, 64, 80)),
-             ("plateau 90 read as 100 (thr 80, the 256 KB marker)", 256.0),
-             ("plateau 90 read as 80 (thr 64)", pt(0.8, 80, 64, 60, 256, 80)),
-             ("64 KB marker 60 read as 50", pt(0.8, 90, 64, 50, 256, 80)),
-             ("64 KB marker 60 read as 70", pt(0.8, 90, 64, 70, 256, 80)),
-             ("256 KB marker 80 read as 90", pt(0.8, 90, 64, 60, 256, 90)),
-             ("256 KB marker 80 read as 70 (thr 72 above 70, between 70 and 90)", pt(0.8, 90, 256, 70, 1024, 90)),
-             ("linear interpolation (method error)", 64 + 192 * (72 - 60) / (80 - 60)),
-             ("half-power point by habit (thr 45, between 30 and 50)", pt(0.5, 90, 4, 30, 16, 50))]:
-    print("%-72s %8.3f %+7.1f%%" % (n, v, 100 * (v / base - 1)))
+SIZES = [4 ** k for k in range(11)]
+CURVES = {"A": [0.008, 0.03, 0.1, 0.5, 2, 8, 40, 50, 60, 80, 90],
+          "B": [0.005, 0.02, 0.08, 0.3, 1, 3, 6, 7, 8, 8, 8],
+          "C": [0.003, 0.01, 0.05, 0.2, 0.8, 4, 20, 40, 70, 60, 60],
+          "D": [0.002, 0.008, 0.03, 0.1, 0.4, 2, 4, 6, 7, 7, 7]}
+def pt(frac, vals):
+    """smallest message size where the polyline reaches frac * (value at 1 MB); log-log interpolation"""
+    tgt = frac * vals[-1]
+    for (x0, y0), (x1, y1) in zip(zip(SIZES, vals), list(zip(SIZES, vals))[1:]):
+        if y0 < tgt <= y1:
+            t = math.log(tgt / y0) / math.log(y1 / y0); return x0 * (x1 / x0) ** t
+    raise ValueError("level never reached")
+def answer(curves):
+    p = 1.0
+    for v in curves.values(): p *= pt(0.8, v) / pt(0.5, v)
+    return p
+if __name__ == "__main__":
+    base = answer(CURVES)
+    for k, v in CURVES.items():
+        a, b = pt(0.8, v), pt(0.5, v)
+        print("%s plateau %-3g x80 %9.6g KB  x50 %9.6g KB  ratio %.6g" % (k, v[-1], a / 1024, b / 1024, a / b))
+    print("GTFA %.6f -> %.3g" % (base, base))
+    minors = sorted(set(round(m * 10 ** d, 4) for d in range(-3, 3) for m in range(1, 10)))
+    n = 0
+    for k in CURVES:
+        for i, s in enumerate(SIZES):
+            v = CURVES[k][i]; j = minors.index(v); hit = False
+            for nv in [minors[j - 1]] + ([minors[j + 1]] if minors[j + 1] <= 100 else []):
+                c2 = {kk: list(vv) for kk, vv in CURVES.items()}; c2[k][i] = nv
+                try: a = answer(c2); d = 100 * (a / base - 1)
+                except ValueError: a, d = None, float("nan")
+                if a is None or abs(d) > 0.05:
+                    hit = True; print("%s %8d B %-4g read as %-4g -> %-6s %+7.1f%%" % (k, s, v, nv, ("%.4g" % a) if a else "n/a", d))
+            n += hit
+    print("critical markers:", n)
+    # method errors
+    def lin(frac, vals):
+        tgt = frac * vals[-1]
+        for (x0, y0), (x1, y1) in zip(zip(SIZES, vals), list(zip(SIZES, vals))[1:]):
+            if y0 < tgt <= y1: return x0 + (x1 - x0) * (tgt - y0) / (y1 - y0)
+    p = 1.0
+    for v in CURVES.values(): p *= lin(0.8, v) / lin(0.5, v)
+    print("linear interpolation instead of log-log: %.4g %+.1f%%" % (p, 100 * (p / base - 1)))
+    p = 1.0
+    for k, v in CURVES.items():
+        pk = max(v) if k == "C" else v[-1]; vv = list(v); vv[-1] = pk
+        p *= pt(0.8, vv) / pt(0.5, vv)
+    print("link C asymptote taken as its 70 peak: %.4g %+.1f%%" % (p, 100 * (p / base - 1)))
+    s = sum(pt(0.8, v) / pt(0.5, v) for v in CURVES.values())
+    print("sum instead of product: %.4g" % s)
