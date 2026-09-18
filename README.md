@@ -3,11 +3,18 @@
 Lumiere task 2, Computer Systems. `task.md` and `image.png` on `main` are the current attempt, in
 the layout of `lumiere-cs-task`. Model logs go to `feedback/`, questions to `ASKS.md`.
 
-Attempt 6 (current, task.md): four links, question is the product over the links of the ratio of the
-80 percent message size to the 50 percent message size, GTFA 859. Seventeen readings decide the
-answer. Built after attempt 5 was rejected by the reviewer ("did not meet the required difficulty
-level and failed the Pass@2 check"). Both models wrong (792 and 233), `feedback/007.md`. Form
-filled on Handshake to the submit button.
+Attempt 7 (current, task.md): a task graph (20 tasks, 35 dependency arrows with delay labels, 59
+crossings) scheduled by static list scheduling on four processors; the answer is the total
+communication cost of the schedule, GTFA 105. Built after attempts 5 and 6 were both rejected on the
+Pass@2 check: the reviewer's model reads the log-log figures at full resolution, so gridline packing
+is not a lever there. Difficulty now sits in graph extraction plus a 20-step scheduling simulation.
+Tools: `tools/dag.py` (graph, scheduler, sensitivity; `python3 tools/dag.py search` scans seeds),
+`tools/make_dag_fig.py` (annealed layout, render), `tools/dag_solution.py` (independent
+re-derivation, writes the golden solution). Run them with `PYTHONSAFEPATH=1`.
+
+Attempt 6 (archive/attempt-6-four-links-two-levels.md): four links, product over the links of the
+ratio of the 80 percent message size to the 50 percent message size, GTFA 859, seventeen readings.
+Both form models wrong (792 and 233, `feedback/007.md`), submitted, rejected on the Pass@2 check.
 
 Attempt 5 (archive/attempt-5-product-ratio.md): three-link figure from attempt 3, product of the
 ratio of link A's 80 percent message size to link B's and the ratio of link C's to link B's, GTFA
