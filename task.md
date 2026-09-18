@@ -1,6 +1,6 @@
 # Attempt 6: four links, product over the links of (80 percent size / 50 percent size), seventeen critical readings
 
-Status: NOT YET RUN on the form. Built 2026-09-18 after attempt 5 was rejected ("did not meet the
+Status: RUN, PASS. Both models wrong (Block 1: 792, Block 2: 233), log in feedback/007.md. Form filled to the submit button, not submitted. Built 2026-09-18 after attempt 5 was rejected ("did not meet the
 required difficulty level and failed the Pass@2 check"). GTFA 859.
 
 Why: attempt 5 (nine critical readings) beat both platform models on the form but not the reviewer's
@@ -148,10 +148,11 @@ Every marker sits on a crossing of two gridlines. No value is printed as text on
 
 ## Step 8. Model failure mode
 
-Fill after the blocks return. Expected: "Figure-based quantitative estimation error" (markers
-placed on the wrong minor gridline). If a model uses the 70 peak of link C as its asymptote or
-interpolates linearly, that is "Data extraction error" or a method error; justify from the actual
-response.
+Block 1 justified, "Figure-based quantitative estimation error". Its method was right; link A's
+64 KB circle read as 70 (is 60), link C's 64 KB diamond read as 80 (is 70), link D read one marker
+to the right with the plateau one line low (3 at 4 KB, 4 at 16 KB, 6 at 64 KB, asymptote 6; the
+open circles are 2, 4, 6, 7, 7, 7 from 1 KB). Product 791.803, -7.8 percent. Full text as entered
+on the form is in feedback/007.md's verdict and the justification box.
 
 ---
 
@@ -193,13 +194,13 @@ Final answer: $859$
 
 ## Step 10. Distractors
 
-Replace the first two with the models' wrong answers once the blocks return.
+As entered on the form:
 
-1. 950 (linear interpolation on the raw values instead of on the logarithms)
-2. 924 (link C's asymptote taken as its 70 peak at 64 KB)
-3. 1080 (link B's 4 KB open square read one line low, as 5)
-4. 787 (link C's 64 KB diamond read one line high, as 80)
-5. 29.5 (sum of the four ratios instead of their product)
+1. 792 (Block 1's answer)
+2. 233 (Block 2's answer)
+3. 950 (linear interpolation on the raw values instead of on the logarithms)
+4. 924 (link C's asymptote taken as its 70 peak at 64 KB)
+5. 1080 (link B's 4 KB open square read one line low, as 5)
 
 ---
 

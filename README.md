@@ -6,7 +6,8 @@ the layout of `lumiere-cs-task`. Model logs go to `feedback/`, questions to `ASK
 Attempt 6 (current, task.md): four links, question is the product over the links of the ratio of the
 80 percent message size to the 50 percent message size, GTFA 859. Seventeen readings decide the
 answer. Built after attempt 5 was rejected by the reviewer ("did not meet the required difficulty
-level and failed the Pass@2 check"). Log in `feedback/007.md` once the blocks return.
+level and failed the Pass@2 check"). Both models wrong (792 and 233), `feedback/007.md`. Form
+filled on Handshake to the submit button.
 
 Attempt 5 (archive/attempt-5-product-ratio.md): three-link figure from attempt 3, product of the
 ratio of link A's 80 percent message size to link B's and the ratio of link C's to link B's, GTFA
