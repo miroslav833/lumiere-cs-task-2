@@ -2,3 +2,7 @@
 __pycache__/
 .env
 *.token
+# render intermediates and the headless Chrome profile used by tools/make_*_fig.py
+tools/.chrome/
+tools/*.svg
+tools/*.html
